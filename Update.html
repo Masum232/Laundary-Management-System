@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Welcome to LMS</title>
+<link href="Update.css" rel="stylesheet" type="text/css">
+</head>
+<body>	
+	<div class="container">
+		<div class="headtag">
+			<h2>LMS || User Update Profile</h2>
+		</div>
+		<hr>
+		<form id="home-form" method="post" action="D:\LMS\Node\dashboard.html" enctype="multipart/form-data">
+			<div><input id="uid" type="hidden" type="number" value="null" /></div>
+
+			<div class="form-group">
+				<label id="username-label" for="User Name"><b>User Name</b></label>
+        		<input type="text" id="User Name" class="form-control" placeholder="Enter User Name" required />
+			</div>
+
+			<div class="form-group">
+				<label id="email-label" for="Email"><b>E-mail</b></label>
+				<input type="text" name="Email" id="Email" class="form-control" placeholder="Enter your Email" required />
+			</div>
+
+			<div class="form-group">
+				<label id="number-label" for="number"><b>Mobile Number</b></label>
+				<input type="text" id="Mobile Number" class="form-control" placeholder="Enter Mobile Number" required />
+			</div>
+			  
+			<div class="form-group">
+				<label id="Password-label" for="Password"><b>Password</b></label>
+				<input type="Password" id="pwd" class="form-control" placeholder="Enter your Password" required />
+			</div>
+
+			<div class="from-group">
+				<button id="register" type="submit" value="Send" onclick="sendDetails()">Register</button>
+			</div>
+			
+        	<div id="lastid">
+				<!-- <a href="#">Forgot Password</a> -->
+				Forgot <a href="#"> password? </a> 
+			</div>
+			<div id="lastid">
+				Back to <a href="./index.html">User Page</a>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		
+		function sendDetails(){
+			var formElement=document.getElementById("home-form");
+			var uid=document.getElementById("uid").value;
+			var nameValue=document.getElementById("Fullname").value;
+			var emailValue=document.getElementById("Email").value;
+			var noValue=document.getElementById("Mobile Number").value;
+			
+
+			var user = {};
+			user['uid']=uid;
+			user['User Name']=nameValue;
+			user['Email']=emailValue;
+			user['Mobile Number']=noValue;
+			
+
+			let option = {
+            	method: 'POST',
+            	headers: {
+                	'Content-Type': 'application/json; charset=utf-8'
+            	},
+				body : JSON.stringify(user)
+			}
+
+			let fetchRes=fetch("http://localhost:8080/lmsl",option);
+			fetchRes.then(res =>res.json()).then(d => {
+                console.log(d)
+            })
+			alert("Register Successful!")
+		}	
+	</script>
+
+</body>
+</html>
+

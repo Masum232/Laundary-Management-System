@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Dashboard</title>
+<link href="dashboard.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="head-title">
+        <h3>Laundry Management System</h3>
+    </div>
+    <nav id="navbar">
+        <!-- <h3>Laundry Management System</h3> -->
+	    <header>Dashboard</header>
+        <ul>
+            <li><a class="nav-link" href="#request">Request Status</a></li>
+            <li><a class="nav-link" href="#lrequest">Laundry Request</a></li>
+            <li><a class="nav-link" href="Update.html">Update Profile</a></li>
+        </ul>
+    </nav>
+    <main id="main">
+        
+        <section id="request">
+            <header id="m">Dashboard / Overview</header>
+
+                <article>
+
+                    <h3>Laundry price list(per unit)</h3>
+                    <!-- <p>
+                        <table id="status">
+                            <tr>
+                                <th>New order</th>
+                                <th>Accepted</th>
+                                <th>Processing</th>
+                                <th>Finished!</th>
+                            </tr>
+                        </table>
+                    </p> -->
+                    <div>
+                        <table id="price">
+                        <tr>
+                            <th>Laundary Price(Per unit)</th>  
+                            <!-- <th>Price</th> -->
+                        </tr>
+                        <tr>
+                            <td>Top wear laundry price</td>
+                            <td>₹10</td>
+                        </tr>
+                        <tr>
+                            <td>Bottom wear laundry price</td>
+                            <td>₹20</td>
+                        </tr>
+                        <tr>
+                            <td>Saree laundry price</td>
+                            <td>₹30</td>
+                        </tr>
+                        <tr><td>Winter wear laundry price</td>
+                            <td>₹60</td>
+                        </tr>
+                        <tr>
+                            <td>Others(if any)</td>
+                            <td>₹150</td>
+                        </tr>
+                        <tr>
+                            <td>Drywash price</td>
+                            <td>₹200</td>
+                        </tr>
+                        </table>
+                    </div>
+                </article>
+            </header>
+        </section>
+
+        <section id="lrequest">
+            <article>
+                <form id="req-form" method="post" action="C:\Users\hp\Desktop\masum project\dashboard.html">
+                    <div><input id="user_id" type="hidden" method="get" action="http://localhost:8080/lmss" type="number" /></div>
+                    <table id="order">
+                        <tr>
+                          <th>Pickup Date</th>
+                          <th><input type="date" id="pdate" required></th>
+                        </tr>
+                        <tr>
+                          <th>Drop-off Date</th>
+                          <th><input type="date" id="pdate" required></th>
+                        </tr>
+                        <tr>
+                          <th>Top wear</th>
+                          <th><input id="tWear" type="text"></th>
+                        </tr>
+                        <tr>
+                          <th>Bottom wear</th>
+                          <th><input id="bWear" type="text"></th>
+                        </tr>
+                        <tr>
+                          <th>Saree</th>
+                          <th><input id="saree" type="text"></th>
+                        </tr>
+                        <tr>
+                          <th>Woollen wear</th>
+                          <th><input id="wcloth" type="text" required></th>
+                        </tr>
+                        <tr>
+                          <th>Others</th>
+                          <th><input id="other" type="text"></th>
+                        </tr>
+                        <tr>
+                          <th>Service type</th>
+                          <th><input id="service" type="text" required></th>
+                        </tr>
+                        <tr>
+                            <th>Description(if any)</th>
+                            <th><input id="descr" type="text"></th>
+                        </tr>
+                      </table>
+                    <button id="submit" type="submit" onclick="orderDetails()">Submit</button>
+                </form>
+                <script>
+                    function orderDetails(){
+                        //alert(document.getElementById("wcloth").value);
+
+                        var reqform=document.getElementById("req-form");
+                        
+                        var user_id=document.getElementById("user_id").value;
+                        var pdateValue=document.getElementById("pdate").value;
+                        var ddateValue=document.getElementById("ddate").value;
+                        var tWearValue=document.getElementById("tWear").value;
+                        var bWearValue=document.getElementById("bWear").value;
+                        var sareeValue=document.getElementById("saree").value;
+                        var wclothValue=document.getElementById("wcloth").value;
+                        var otherValue=document.getElementById("other").value;
+                        var serviceValue=document.getElementById("service").value;
+                        var descrValue=document.getElementById("descr").value;
+
+                        var order={};
+                        order['user_id']=user_id;
+                        order['pdate']=pdateValue;
+                        order['ddate']=ddateValue;
+                        order['tWear']=tWearValue;
+                        order['bWear']=bWearValue;
+                        order['saree']=sareeValue;
+                        order['wcloth']=wclothValue;
+                        order['other']=otherValue;
+                        order['service']=serviceValue;
+                        order['descr']=descrValue;
+
+                         let optionOr={
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json; charset=utf-8'
+                            },
+                            body : JSON.stringify(order)
+                            }
+                        let fetchOrder=fetch("http://localhost:8080/lmso",optionOr);
+                        fetchOrder.then(res =>res.json()).then(o => {
+                            console.log(o)
+                        })
+                        alert("Order Accepted")
+                    }
+                </script>
+            </article>
+        </section>
+
+        <footer>
+            <p>Copyright © 2022 | Laundry Management System | Privacy Policy</p>
+            <p>*Terms & Conditions</p>
+        </footer>
+    </main>
+
+</body>
+</html>

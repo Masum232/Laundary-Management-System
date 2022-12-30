@@ -1,0 +1,126 @@
+body  
+{  
+    width: 500px;
+    color: black;
+    background-color: #ffffff;  
+    /* line-height: 1.5; */
+    font-family:'Times New Roman', Times, serif;  
+}
+.head-title{
+    font-size: xx-large;
+    width: 5000px;
+    padding: 10px;
+    background-image: linear-gradient(rgb(192, 91, 201), rgb(245, 154, 233));
+    color: aliceblue;
+}
+#navbar {
+    position: fixed;
+    min-width: 290px;
+    width: 300px;
+    height: 100%;
+    border-right: solid;
+    background-color: black;
+    border-color: blanchedalmond;
+}
+
+header {
+    color:white;
+    margin: 10px;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: thin;
+}
+#main{
+    position: absolute;
+    margin-left: 310px;
+    padding: 20px;
+    margin-bottom: 110px;
+    background-color: white;
+    width: 76%;
+}
+#main header{
+    text-align: left;
+    margin: 0px;
+}
+ 
+#req-form{
+    height:600px;
+    width: 500px;
+    overflow:hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 2.5rem 0.625rem;
+    border-radius: 15px ;
+    border-radius: 0.25rem;
+
+}
+p{
+    font-size: large;
+}
+#navbar ul {
+    height: 88%;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#navbar li {
+    padding: 15px;
+    background-color:black;
+    text-align:center;
+    position: relative;
+    width: 100%;
+}
+#navbar a {
+    display: block;
+    padding: 10px 30px;
+    color:white;
+    background-color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#submit{
+    display: block;
+    float: right;
+    padding: 5px;
+    background:blue;
+    border-color: blue;
+    border-radius: 5px;
+    cursor: pointer;
+}
+section article {
+    color: black;
+    margin: 15px;
+    font-size: 30px;
+}
+
+section li {
+    margin: 15px 0px 0px 20px;
+}
+
+table{
+    width:100%;
+}
+#status{
+    height: 100px;
+}
+#price{
+    height: 450px;
+}
+#order{
+    font-size: large;
+    height:500px;
+    padding:50px;
+}
+    
+footer{
+    text-align: center;
+}
+h3{
+    color: white;
+    background-attachment: fixed;
+}
+#m
+{
+    color:black;
+}
